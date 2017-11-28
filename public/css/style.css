@@ -1,0 +1,40 @@
+body { 
+	font-family: Helvetica, sans-serif; 
+	background-color: #b30004;
+	color: #ffffff;
+	max-width: 720px;
+	max-height: 1280px;
+}
+h2, h4 { 
+	margin-top:0; 
+	text-align: center;
+	text-decoration: none;
+}
+
+a:link   
+{   
+ text-decoration:none;
+ color: #ffffff;   
+} 
+
+form { 
+	margin-top: 15px; 
+}
+form > input { 
+	margin-right: 15px; 
+	color: #000000;
+}
+
+.boton{
+	color: #ffffff;
+	font-family: Helvetica, sans-serif; 
+	font-size: 1.2em;
+	background:  #b30004;
+	margin: 20px;
+	padding: 10px;
+}
+
+#results { 
+	float:right; margin-left:20px; margin-top: 0px;  padding:5px; border:1px solid; background:#ccc; width: 310px;
+			height: 230px;
+}
