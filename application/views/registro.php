@@ -1,6 +1,7 @@
-<?= form_open('/Site/recibirDatos'); ?>
+<?= form_open('/Site/recibirDatos'); 
+$nombre= date('YmdHis').'.png';
+?>
 <!doctype html>
-
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,19 +12,28 @@
 	<link rel="stylesheet" href="<?php echo base_url('public/css/style.css') ?>">
 </head>
 <body>
+	<div class="registro">
+		<img src="<?php echo base_url('public/img/top.jpg') ?>">
+	</div>
 	<div class="form-group col-md-12">
 			<div class="col-md-2">
 			</div>
-			<div class="form-group col-md-8">
-				<h2>Registra tu nombre y apellido</h2><br>
-				<input type="text" class="form-control" name="nombre" id="nombre" >
+			<div class="form-group col-md-7">
+				<input type="text" class="form-control texto" name="nombre" id="nombre" placeholder="Nombre" >
 			</div>
-		</div>
+	</div>
+	<div class="form-group col-md-12">
+			<div class="col-md-2">
+			</div>
+			<div class="form-group col-md-7">
+				<input type="text" class="form-control texto" name="apellido" id="apellido" placeholder="Apellido" >
+			</div>
+	</div>
 	<div class="form-group col-md-12">
 		<div class="col-md-2">
 		</div>
 		<div class="form-group col-md-8 offset-md-2">
-			<h2>Danos tu primer selfie en Mc Donald's</h2><br>
+			<img class="grafica" src="<?php echo base_url('public/img/selfie.jpg') ?>"><br>
 			<div id="results"></div>
 			<div id="my_camera"></div>
 			<br><br>
@@ -45,13 +55,14 @@
 	<form>		
 		<div align="center">
 			<a href="#" onclick="take_snapshot()">
-				<h4>Haz click en la cámara</h4>
-				<img width="120px" src="<?php echo base_url('public/img/webcam.png') ?>">
+				<br>
+				<img width="120px" title="Tomar selfie" src="<?php echo base_url('public/img/webcam.png') ?>">
 			</a>
 		</div>
-		<div align="right">
-			<input type="hidden" name="fotoA" id="fotoA">
-			<input type="submit" onclick="agradecimiento()" class="boton" name="guardar" value="Guardar" id="guardar">
+		<div align="center" class="col-md-4 offset-md-2">
+			<br>
+			<input type="hidden" name="fotoA" id="fotoA" value="<?= $nombre; ?>">
+			<input type="submit" onclick="agradecimiento()" class="btn btn-danger btn-lg" name="guardar" value="Guardar" id="guardar">
 		</div>			
 	</form>
 
@@ -64,13 +75,20 @@
 			Webcam.snap( function(data_uri) {
 				// display results in page
 				document.getElementById('results').innerHTML = 
-					'<img name="foto" id="foto" src="'+data_uri+'"/>';
-					document.getElementById('fotoA').value = data_uri;
 			} );
 		}
 
 		function agradecimiento(){
 			alert('¡Gracias por registrarte!');
+			
+			var file =  document.getElementById("foto").src;
+			var nombre= document.getElementById("fotoA").value;
+		    var formdata = new FormData();
+		    formdata.append("foto", file);
+		    formdata.append("nombre",nombre);
+    		var ajax = new XMLHttpRequest();
+    		ajax.open("POST", "<?php echo base_url('public/webcamjs-master/upload.php')?>",);
+   		 	ajax.send(formdata);
 		}
 		
 	</script>

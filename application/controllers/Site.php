@@ -17,6 +17,7 @@ class Site extends CI_Controller {
 	public function recibirDatos() {
 		$data= array(
 			'nombre' => $this->input->post('nombre'),
+			'apellido' => $this->input->post('apellido'),
 			'fotoA' => $this->input->post('fotoA')
 			);
 		$this->querys_model->insertRegistro($data);

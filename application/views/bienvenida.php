@@ -8,20 +8,18 @@
 	<link rel="stylesheet" href="<?php echo base_url('public/bootstrap/js/bootstrap.min.js') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public/css/style.css') ?>">
 </head>
-<body>
+<body class="fondo">
 	<?php
 	if(count($registros)>0){		
 		foreach ($registros as $dato) {
 			echo "<br>";
-			echo "<div align='center'><img src='".$dato['foto']."'></div>";
-			echo "<div align='center'><h2>".$dato['nombre'].".</h2></div>";
-			echo "<div align='center'><h3>Bienvenido al proceso de reclutamiento de Mc Donald´s</h3></div>";
+			echo "<div align='center' class='imagen'><img src='".$dato['foto']."'></div>";
+			echo "<div align='center' class='nombre'>".strtoupper($dato['nombre']).".</div>";
 			$id=$dato['id'];	
 			echo "<META HTTP-EQUIV='refresh' CONTENT='15; URL=mostrar'>";
 		}
 	}else{
 		echo "<br>";
-		echo"<h2>Bienvenidos al Centro de Reclutamiento!!!</h2>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='15; URL=mostrar'>";
 	}
 

@@ -9,9 +9,10 @@ class Querys_model extends CI_Model
 		$this->load->database();
 	}
 	function insertRegistro($data){
-		$fecha=date('Y-m-d H:m:s');
+		$fecha=date('Y-m-d H:i:s');
 		$estatus= "INACTIVO";
-		$query=$this->db->insert('registro',array('nombre' => $data['nombre'],'foto' => $data['fotoA'],'fecha' => $fecha ,'estatus' => $estatus));
+		$foto='http://localhost/mcnews-cr/public/webcamjs-master/uploads/'.$data['fotoA'];
+		$query=$this->db->insert('registro',array('nombre' => $data['nombre'],'apellido' => $data['apellido'],'foto' => $foto,'fecha' => $fecha ,'estatus' => $estatus));
 		return $query;
 	}	
 
